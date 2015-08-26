@@ -3,8 +3,8 @@ class CreatePridereplies < ActiveRecord::Migration
     create_table :pridereplies do |t|
       
       t.integer :pride_id
-      t.string :pride_email
-      t.string :pride_content
+      t.string :pridereply_email
+      t.string :pridereply_content
 
       t.timestamps null: false
     end

@@ -1,4 +1,4 @@
-<h1>레시피 페이지</h1>
+<a href="/yumyum/index"><h1>레시피 페이지</h1></a>
 
 <div class="col-md-12 panel panel-default">
     <div class="col-md-12 panel-body" style="float:left;">
@@ -9,7 +9,18 @@
     <div class="col-md-12 panel-body" style="text-align:center;">
         <p><%= detailrecipe.detailrecipe_image %></p>
         <p><%= detailrecipe.detailrecipe_content %> | <%= detailrecipe.detailrecipe_voice %></p>
-        <p>팁(이 부분은 ajax가 필요할듯... 바로바로 tipid 값을 받아올 수가 없음)</p>
+        <p style="color:red;">팁(이 부분은 ajax가 필요할듯... 바로바로 tipid 값을 받아올 수가 없음)</p>
     </div>
     <% end %>
+</div>
+<div class="col-md-12 panel panel-default">
+    <div class="col-md-12 panel-body" style="float:left; text-align:center;">
+        <% @recipepage.smallreplies.each do |smallreply| %>
+            <p>작성자 : <%= smallreply.smallreply_email %></p>
+            <p>내용 : <%= smallreply.smallreply_content %></p>
+            <% smallreply.smallreres.each do |smallrere| %>
+                <p>-> <%= smallrere.smallrere_email %> : <%= smallrere.smallrere_content %></p>
+            <% end %>
+        <% end %>
+    </div>
 </div>

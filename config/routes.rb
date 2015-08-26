@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :dusers, :controllers => {registrations:'duser/registrations'}
   root 'yumyum#index'
   
   get ':controller(/:action(/:id))'

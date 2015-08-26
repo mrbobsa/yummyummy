@@ -6,13 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.new
-user.user_email = "yumyum@naver.com"
-user.user_password = "1234"
-user.user_favorite = "밥"
-user.user_image = "프로필사진"
-user.user_nickname = "냠냠이"
-user.save
 
 tutor = Tutor.new
 tutor.tutor_name = "파썰기"
@@ -52,8 +45,8 @@ pride.save
 
 reply = Pridereply.new
 reply.pride_id = 1
-reply.pride_email = "yumyum3@naver.com"
-reply.pride_content = "오 쩌는듯"
+reply.pridereply_email = "yumyum3@naver.com"
+reply.pridereply_content = "오 쩌는듯"
 reply.save
 
 recipe = Bigrecipe.new

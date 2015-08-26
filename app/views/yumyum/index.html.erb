@@ -1,4 +1,12 @@
 <h1>메인페이지</h1>
+<% if duser_signed_in? %>
+<a href="/dusers/sign_out">로그아웃</a>
+<img src="<%= @image %>" style="height:100px; width:100px"/>
+<%= current_duser.email %>
+<% else %>
+<a href="/dusers/sign_in">로그인</a>
+<a href="/dusers/sign_up">회원가입</a>
+<% end %>
 
 <div class="col-md-12 panel panel-default">
   <div class="col-md-12 panel-body">
@@ -17,3 +25,5 @@
     </div>
   </div>
 </div>
+
+<a href="/yumyum/quest"><h2>게시판</h2></a>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826030802) do
+ActiveRecord::Schema.define(version: 20150826054404) do
 
   create_table "bigrecipes", force: :cascade do |t|
     t.string   "bigrecipe_category"
@@ -31,6 +31,30 @@ ActiveRecord::Schema.define(version: 20150826030802) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "dusers", force: :cascade do |t|
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
+    t.string   "user_favorite"
+    t.string   "user_nickname"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",           default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "user_image_file_name"
+    t.string   "user_image_content_type"
+    t.integer  "user_image_file_size"
+    t.datetime "user_image_updated_at"
+  end
+
+  add_index "dusers", ["email"], name: "index_dusers_on_email", unique: true
+  add_index "dusers", ["reset_password_token"], name: "index_dusers_on_reset_password_token", unique: true
+
   create_table "materials", force: :cascade do |t|
     t.string   "material_code"
     t.string   "material_normal"
@@ -43,10 +67,10 @@ ActiveRecord::Schema.define(version: 20150826030802) do
 
   create_table "pridereplies", force: :cascade do |t|
     t.integer  "pride_id"
-    t.string   "pride_email"
-    t.string   "pride_content"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "pridereply_email"
+    t.string   "pridereply_content"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "prides", force: :cascade do |t|
@@ -121,16 +145,6 @@ ActiveRecord::Schema.define(version: 20150826030802) do
     t.string   "tutor_image"
     t.text     "tutor_content"
     t.string   "tutor_link"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "user_email"
-    t.string   "user_password"
-    t.string   "user_favorite"
-    t.string   "user_image"
-    t.string   "user_nickname"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

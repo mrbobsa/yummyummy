@@ -1,0 +1,20 @@
+<a href="/yumyum/index"><h1>게시판</h1></a>
+
+<div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" onclick="location.href='/yumyum/quest'">질문</button>
+    <button type="button" class="btn btn-default" onclick="location.href='/yumyum/pride'">자랑</button>
+</div>
+
+<% @article.each do |article| %>
+<div class="col-md-12 panel panel-default">
+    <div class="col-md-12 panel-body">
+        <p><%= article.quest_title %><span style="float:right;"><%= article.quest_email %></span></p>
+        <hr style="width:100%; color:green; border:thin solid green">
+        <p><%= article.quest_image %></p>
+        <p><%= article.quest_content %></p>
+        <% article.questreplies.each do |reply| %>
+            <p>-> <%= reply.questreply_email %> : <%= reply.questreply_content %></p>
+        <% end %>
+    </div>
+</div>
+<% end %>
