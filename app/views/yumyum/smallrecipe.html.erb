@@ -1,0 +1,15 @@
+<h1>레시피 페이지</h1>
+
+<div class="col-md-12 panel panel-default">
+    <div class="col-md-12 panel-body" style="float:left;">
+        <p><%= @recipepage.smallrecipe_image %></p>
+        <p><%= @recipepage.smallrecipe_name %> | <%= @recipepage.smallrecipe_heart %></p>
+    </div>
+    <% @recipepage.detailrecipes.each do |detailrecipe| %>
+    <div class="col-md-12 panel-body" style="text-align:center;">
+        <p><%= detailrecipe.detailrecipe_image %></p>
+        <p><%= detailrecipe.detailrecipe_content %> | <%= detailrecipe.detailrecipe_voice %></p>
+        <p>팁(이 부분은 ajax가 필요할듯... 바로바로 tipid 값을 받아올 수가 없음)</p>
+    </div>
+    <% end %>
+</div>

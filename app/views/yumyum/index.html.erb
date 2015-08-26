@@ -1,0 +1,19 @@
+<h1>메인페이지</h1>
+
+<div class="col-md-12 panel panel-default">
+  <div class="col-md-12 panel-body">
+    <div class="col-md-3 panel-main" style="text-align:center;">
+        <p><%= @recipe.bigrecipe_image %></p>
+        <p><%= @recipe.bigrecipe_category %> : <%= @recipe.bigrecipe_name %></p>
+    </div>
+    <div class="col-md-9 panel-kind">
+        <% @recipe.smallrecipes.each do |smallrecipe| %>
+        <div class="col-md-12 panel panel-default">
+          <div class="col-md-12 panel-body">
+              <a href="/yumyum/smallrecipe/<%= smallrecipe.id %>"><p><%= smallrecipe.smallrecipe_name %> | <%= smallrecipe.smallrecipe_heart %></p></a>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

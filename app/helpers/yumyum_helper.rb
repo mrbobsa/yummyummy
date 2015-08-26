@@ -1,0 +1,2 @@
+module YumyumHelper
+end
