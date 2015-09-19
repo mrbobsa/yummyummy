@@ -158,5 +158,74 @@
   <script src="/assets/sequence.min.js"></script>
   <script src="/assets/sequence-theme.modern-slide-in.js"></script>
 
+
+
+
+
+
+<h1>Test</h1>
+      <!--레시피슬라이드-->
+      <div class="w-slider reciipe">
+        <div class="w-slider-mask slide_mask">
+            <div class="w-slide">
+              <div class="w-row">
+                <div class="w-col w-col-8 w-col-small-8">
+                <img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
+                </div>
+                <div class="w-col w-col-4 w-col-small-4 recipe_process">
+                  <div class="recipe_txt">
+                    필요한 재료 : <% @sub_m.each do |x| %><%= x %>&nbsp; <% end %>
+                    <!--(height = auto, min = 150 max = 250)-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      
+      
+      <!-- slide controls --> 
+      <div class="w-slider-arrow-left">
+        <div class="w-icon-slider-left slide_left"></div>
+      </div>
+      <div class="w-slider-arrow-right">
+        <div class="w-icon-slider-right slide_right"></div>
+      </div>
+        <div class="w-slider-nav w-round"></div>
+      </div> 
   
+  <div class="w-container">
+    <div id="sequence" class="seq">
+      <div class="seq-screen">
+        <ul class="seq-canvas">
+          <li class="seq-in">
+            <div class="seq-model">
+              <img data-seq src="<%= @recipepage.smallrecipe_image.url %>" />
+            </div>
   
+            <div class="seq-title">
+              <h2 data-seq><%= @recipepage.smallrecipe_content %></h2>
+              <h3 data-seq> 필요한 재료 : <% @sub_m.each do |x| %><%= x %>&nbsp; <% end %></h3>
+            </div>
+          </li>
+          
+          <% @detail.each do |recipe| %>
+          <li>
+            <div class="seq-model">
+              <img data-seq src="<%= recipe.detailrecipe_image.url %>"/>
+            </div>
+  
+            <div class="seq-title">
+              <h2 data-seq><%= recipe.detailrecipe_content %></h2>
+              <h3 data-seq><%= recipe.detailrecipe_tip %></h3>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
+      <button type="button" class="seq-prev" aria-label="Previous">Previous</button>
+      <button type="button" class="seq-next" aria-label="Next">Next</button>
+    </fieldset>
