@@ -1,0 +1,296 @@
+<!--냉장고, 재료입력-->
+
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+  <div class="w-section section main_content">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-8 w-col-medium-6">
+          <div class="search_wrapper">
+            <input class="w-input ingre_search" type="text" placeholder="재료의 이름을 검색해보세요(에이젝스로 구현)" data-name="검색">
+            <input class="w-button ingre_search_submit" type="submit" value="검색">
+          </div>
+          <div id="tabs">
+            <ul>
+              <li><a href="#tabs-1">채소</a></li>
+              <li><a href="#tabs-2">육류</a></li>
+              <li><a href="#tabs-3">해물</a></li>
+              <li><a href="#tabs-4">과일</a></li>
+              <li><a href="#tabs-5">인스턴트</a></li>
+              <li><a href="#tabs-6">소스</a></li>
+            </ul>
+            
+            <div class="w-tab-content">
+              <div id="tabs-1" class="w-tab-active ingre_list">
+                <div class="w-row">
+                  <% @jaeryo.each do |jaeryo| %>
+                    <% if Material.find(jaeryo.material_id).material_category == '채소' %>
+                      <div class="w-col w-col-2 w-col-small-4">
+                          <div class="ingre_wrapper"><img id="gray-image" class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                           <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                           <a href="/yumyum/material_del/<%= jaeryo.material_id %>">삭제</a>
+                          </div>
+                      </div>
+                    <% end %>  
+                  <% end %>
+                </div>
+              </div>
+              <div id="tabs-2" class="ingre_list">
+                <div class="w-row">
+                <% @jaeryo.each do |jaeryo| %>
+                  <% if Material.find(jaeryo.material_id).material_category == '육류' %>
+                    <div class="w-col w-col-2">
+                        <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                        </div>
+                    </div>
+                  <% end %>  
+                <% end %>  
+                </div>
+              </div>
+              <div id="tabs-3" class="ingre_list">
+                <div class="w-row">
+                  <% @jaeryo.each do |jaeryo| %>
+                    <% if Material.find(jaeryo.material_id).material_category == '해물' %>
+                      <div class="w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-4">
+                        <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>  
+                </div>
+              </div>
+              <div id="tabs-4" class="ingre_list">
+                <div class="w-row">
+                  <% @jaeryo.each do |jaeryo| %>
+                    <% if Material.find(jaeryo.material_id).material_category == '가공식품' %>
+                      <div class="w-col w-col-2">
+                        <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                        </div>
+                      </div>
+                    <% end %>  
+                  <% end %>
+                </div>
+              </div>
+              <div id="tabs-5" class="ingre_list">
+                <div class="w-row">
+                  <% @jaeryo.each do |jaeryo| %>
+                    <% if Material.find(jaeryo.material_id).material_category == '소스' %>
+                    <div class="w-col w-col-2">
+                      <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                       <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                      </div>
+                    </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div id="tabs-6" class="ingre_list">
+                <div class="w-row">
+                  <% @jaeryo.each do |jaeryo| %>
+                    <% if Material.find(jaeryo.material_id).material_category == '기타' %>
+                      <div class="w-col w-col-2">
+                        <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                        </div>
+                      </div>
+                    <% end %>  
+                  <% end %>
+              </div>
+            </div>
+          </div>
+<!--          <div class="w-row w-hidden-main w-hidden-medium w-hidden-small">
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">채소류</a>
+            </div>
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">육류</a>
+            </div>
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">해물류</a>
+            </div>
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">과일류</a>
+            </div>
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">인스턴트류</a>
+            </div>
+            <div class="w-col w-col-2 w-col-tiny-4"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button ingre_tab_m" href="#">소스류</a>
+            </div>
+          </div>   -->
+<!--          <div class="w-hidden-main w-hidden-medium w-hidden-small ingre_list_m">
+            <div class="w-row">
+              <div class="w-col w-col-2 w-col-tiny-4">
+                <div class="ingre_wrapper"><img class="ingre_image" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" width="50">
+                  <div class="ingre_name">양파</div>
+                </div>
+              </div>
+              <div class="w-col w-col-2 w-col-tiny-4"></div>
+              <div class="w-col w-col-2 w-col-tiny-4"></div>
+              <div class="w-col w-col-2 w-col-tiny-4"></div>
+              <div class="w-col w-col-2 w-col-tiny-4"></div>
+              <div class="w-col w-col-2 w-col-tiny-4"></div>
+            </div>
+             모바일 대응으로 임시로 만들어 놓은것인데, 버튼에 링크같은게 없어서 작동을 안함. 우선 숨겨놓음.-->
+          </div>
+        </div>
+        <div class="w-col w-col-4 w-col-medium-6">
+          <div class="select_ingre">
+            <h3>내가 선택한 재료</h3>
+            <div class="w-row">
+              <% @materialcode.each do |code| %>
+                 <% m_image = Material.find(code) %>  
+                <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                  <div class="ingre_wrapper"><img class="ingre_image" src="<%= m_image.normal_image.url %>" width="50">
+                    <div class="ingre_name"><%= m_image.material_name %></div>
+                   <a href="/yumyum/mymaterial_del/<%= m_image.material_code %>">삭제</a>
+                  </div>
+                </div>
+              <% end %>
+              <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6"></div>
+              <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6"></div>
+              <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6"></div>
+            </div>
+          </div>
+          <div class="recipe_wrapper">
+            <h3>추천 레시피</h3>
+            <div class="recipe_result">
+              <div class="w-row">
+                <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+                  <div class="recipe"><a href="../yumyum/recipe"><img class="recipe_image" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" width="120"></a>
+                    <div class="like_num">좋아요 : 00개</div>
+                    <div class="recipe_name">된장찌개</div>
+                  </div>
+                </div>
+                <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <style>
+body {
+  font-family: Roboto, sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 22px;
+}
+h1 {
+  margin-bottom: 19px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 500;
+}
+h2 {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: left;
+}
+h3 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 500;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+p {
+  margin-bottom: 5px;
+}
+.section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.section.main_content {
+  margin-top: 74px;
+  padding-top: 20px;
+}
+.daily_recipe.h2:hover {
+  display: block;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+}
+.ingre_tab {
+  position: static;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  font-size: 13px;
+}
+.ingre_tab:hover {
+  background-color: #fe7815;
+  box-shadow: #f6a971 0px 0px 8px 2px inset;
+}
+.ingre_tab:focus {
+  background-color: #fe7815;
+}
+.ingre_tab.w--current {
+  border-radius: 3px;
+  background-color: #fe7815;
+  box-shadow: #f6a971 0px 0px 8px 2px inset;
+}
+.recipe_wrapper {
+  position: static;
+}
+.ingre_list {
+  background-color: white;
+}
+.ingre_image {
+  margin-right: 5px;
+}
+.recipe {
+  text-align: center;
+}
+.ingre_wrapper {
+  padding-top: 3px;
+  text-align: center;
+}
+.ingre_search {
+    display: block;
+    width: 90%;
+    float: left;
+    text-align: left;
+}
+</style>
+
+<footer>
+  <script>
+    // $(document).ready(function(){
+    //   $( '#tabs' ).tabs(); 
+    // });
+    
+    $(function() {
+      $( '#tabs' ).tabs();
+    });
+  </script>
+  
+</footer>

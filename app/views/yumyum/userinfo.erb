@@ -1,0 +1,227 @@
+<!--프로필 페이지-->
+
+
+  <div class="w-section section main_content">
+    <div class="w-container">
+      <h1>My page</h1>
+      <div class="w-row">
+        <div class="w-col w-col-3 w-col-small-6 w-col-tiny-3"><img class="profile_pic" src="<%= @image %>" width="200">
+        </div>
+        <div class="w-col w-col-9 w-col-small-6 w-col-tiny-9">
+          <div class="user_content"><%= current_duser.email %></div>
+          <div class="user_content"><%= current_duser.user_nickname %></div>
+          <div class="user_content">(그냥 넣은 것) 요리 실력</div><a class="w-button correct_button" href="#">개인정보 수정하기</a>
+        </div>
+      </div>
+      <div class="w-row book_row">
+        <div class="w-col w-col-6 w-col-small-6 my_ingre">
+          <h3>내가 선택한 재료</h3>
+          <div class="w-row ingre_row">
+            <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
+              <% @materialcode.each do |m| %>
+                <% material = Material.find(m) %>
+                <div class="ingre_wrapper">
+                  <img class="ingre_image" src="<%= material.normal_image %>" width="50">
+                </div>
+                <div class="ingre_name"><%= material.material_name %></div>
+                <a href="/yumyum/mymaterial_del/<%= material.material_code %>">삭제</a>
+              <% end %>
+            </div>
+          </div>
+          <div class="button_wrapper"><a class="w-button go_refrig" href="/yumyum/material">나의 냉장고 가기</a>
+          </div>
+        </div>
+        <div class="w-col w-col-6 w-col-small-6 my_scrap">
+          <h3>내 스크랩북 현황</h3>
+          <div class="w-row scrap_row">
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <div class="scrap_title">내가 스크랩한
+                <br>레시피</div>
+              <div class="scrap_recipe_num"><strong><%= @recipe %> 개</strong>
+              </div>
+            </div>
+            <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+              <div class="scrap_title">내가 스크랩한
+                <br>튜토리얼</div>
+              <div class="scrap_recipe_num"><strong><%= @tutor %> 개</strong>
+              </div>
+            </div>
+          </div>
+          <div class="button_wrapper"><a class="w-button go_scrap" href="/yumyum/myrecipe">나의 스크랩북 가기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- 기존코드 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Information</h3>
+  </div>
+  <div class="panel-body">
+    <img src="<%= current_duser.user_image %>" style="width:100px; height:100px; border-radius:50%;"> 
+    <p>E-mail : <%= current_duser.email %></p>
+    <p>닉네임 : <%= current_duser.user_nickname %></p>
+    <p>내가 선택한 재료 : 
+    <% @material.each do |m| %>
+      <%= m.material_name %>
+      <a href="/yumyum/mymaterial_del/<%= m.material_code %>">삭제</a>
+    <% end %>
+    </p>
+  </div>
+  <div class="panel-footer">
+      <div class="row">
+          <div class="col-md-4">
+              스크랩 한 레시피 : <a href="/yumyum/myrecipe/<%= current_duser.id %>"><%= @recipe %> 개</a>
+          </div>
+          <div class="col-md-4">
+              스크랩 한 튜토리얼 : <a href="/yumyum/mytutor/<%= current_duser.id %>"><%= @tutor %> 개</a>
+          </div>
+      </div>
+  </div>
+</div>
+-->
+
+<style>
+body {
+  font-family: Roboto, sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 22px;
+}
+h1 {
+  margin-bottom: 19px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 500;
+}
+h2 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: center;
+}
+h3 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  margin-left: 0px;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+p {
+  margin-bottom: 5px;
+}
+.section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.section.main_content {
+  background-color: #dde7ed;
+}
+
+.user_content {
+  margin-bottom: 3px;
+}
+.book_row {
+  margin-top: 20px;
+}
+.go_refrig {
+  background-color: #fe7815;
+  color: black;
+}
+.my_ingre {
+  padding-bottom: 10px;
+  border: 3px solid #dde7ed;
+  background-color: white;
+}
+.ingre_row {
+  margin-bottom: 10px;
+}
+.my_scrap {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border: 3px solid #dde7ed;
+  background-color: white;
+}
+.go_scrap {
+  background-color: #fe7815;
+  color: black;
+}
+.scrap_title {
+  margin-bottom: 5px;
+  text-align: center;
+}
+.scrap_recipe_num {
+  font-size: 24px;
+  text-align: center;
+}
+.scrap_row {
+  margin-bottom: 10px;
+}
+.correct_button {
+  margin-top: 20px;
+  background-color: #fe7815;
+  color: black;
+}
+.ingre_wrapper {
+  padding-top: 3px;
+  text-align: center;
+}
+.button_wrapper {
+  text-align: center;
+}
+html.w-mod-js *[data-ix="fade-in-on-load"] {
+  opacity: 0;
+  -webkit-transform: translate(0px, 24px);
+  -ms-transform: translate(0px, 24px);
+  transform: translate(0px, 24px);
+}
+html.w-mod-js *[data-ix="fade-in-on-scroll"] {
+  opacity: 0;
+  -webkit-transform: translate(0px, 24px);
+  -ms-transform: translate(0px, 24px);
+  transform: translate(0px, 24px);
+}
+@media (max-width: 991px) {
+}
+@media (max-width: 767px) {
+  h3 {
+    margin-bottom: 8px;
+  }
+  .section {
+    padding-top: 43px;
+    padding-bottom: 43px;
+    text-align: center;
+  }
+}
+@media (max-width: 479px) {
+}
+
+</style>
+

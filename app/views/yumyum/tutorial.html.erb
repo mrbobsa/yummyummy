@@ -1,0 +1,234 @@
+<!--<a href="/yumyum/index"><h1>튜토리얼 페이지</h1></a>-->
+
+<!--<div class="col-md-12 container">-->
+<!--    <% @tutor.each do |tutorial| %>-->
+<!--    <div class="col-md-4 panel panel-default">-->
+<!--        <div class="col-md-12 panel-body">-->
+<!--            <p><%= tutorial.tutor_name %></p>-->
+<!--            <hr style="width:100%; color:gray; border:thin solid gray">-->
+<!--            <p><%= tutorial.tutor_image %></p>-->
+<!--            <p><%= tutorial.tutor_content %></p>-->
+<!--            <p><%= tutorial.tutor_link %></p>-->
+<!--            <a href="/yumyum/connect/<%= tutorial.id %>"><p>스크랩</p></a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <% end %>-->
+<!--</div>-->
+
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+<div class="main_content" style="margin-top:80px;margin-bottom:20px;padding-top:20px;">
+  <div class="w-container">
+    <h3>계량과 손질</h3>
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">숟가락</a></li>
+        <li><a href="#tabs-2">종이컵</a></li>
+        <li><a href="#tabs-3">눈대중</a></li>
+        <li><a href="#tabs-4">손</a></li>
+        <li><a href="#tabs-5">다지기</a></li>
+      </ul>
+      <div class="w-tab-content">
+        <div id="tabs-1" class="tab-active">
+          <div style="text-align:center;">
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-1.png">
+              <div class="tutor_txt">설탕(1)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-2.png">
+              <div class="tutor_txt">설탕(0.5)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-3.png">
+              <div class="tutor_txt">설탕(0.3)</div><br>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-4.png">
+              <div class="tutor_txt">다진마늘(1)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-5.png">
+              <div class="tutor_txt">다진마늘(0.5)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-6.png">
+              <div class="tutor_txt">다진마늘(0.3)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-7.png">
+              <div class="tutor_txt">간장(1)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-8.png">
+              <div class="tutor_txt">간장(0.5)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-9.png">
+              <div class="tutor_txt">간장(0.3)</div><br>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-10.png">
+              <div class="tutor_txt">고추장(1)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-11.png">
+              <div class="tutor_txt">고추장(0.5)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/1-12.png">
+              <div class="tutor_txt">고추장(0.3)</div><br>
+            </div>
+          </div>
+        </div>
+        <div id="tabs-2">
+          <div style="text-align:center;">
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-1.png">
+              <div class="tutor_txt">육수(1컵=180ml)<p style="color:orange;"><b>종이컵에 가득!</b></p></div>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-2.png">
+              <div class="tutor_txt">육수(1/2컵=90ml)<p style="color:orange;"><b>종이컵에 절반만~</b></p></div>
+            </div><br>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-3.png">
+              <div class="tutor_txt">밀가루(1컵=100g)</div>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-4.png">
+              <div class="tutor_txt">다진양파(1컵=110g)</div>
+            </div></br>
+            <div><p style="color:orange;"><b>종이컵에 가득담아 윗면 깎기~</b></p></div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-5.png">
+                <div class="tutor_txt">아몬드(1/2컵)<p style="color:orange;"><b>종이컵에 절반만~</b></p></div>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/2-6.png">
+              <div class="tutor_txt">멸치(1컵)<p style="color:orange;"><b>종이컵에 가득!</b></p></div>
+            </div><br>
+          </div>
+        </div>
+        <div id="tabs-3">
+          <div style="text-align:center;">
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-1.png">
+              <div class="tutor_txt">애호박(1/2개=100g)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-2.png">
+              <div class="tutor_txt">양파(1/4개=50g)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-3.png">
+              <div class="tutor_txt">무(1토막개=150g)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-4.png">
+              <div class="tutor_txt">당근(1/2개=100g)</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-5.png">
+              <div class="tutor_txt">대파 흰 부분(1대=10cm)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-6.png">
+              <div class="tutor_txt">마늘(1쪽=5g)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-7.png">
+              <div class="tutor_txt">돼지고기(1토막=200g)</div><br>
+            </div>&nbsp;&nbsp;
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/3-8.png">
+              <div class="tutor_txt">생강(1쪽=7g)</div><br>
+            </div>
+          </div>
+        </div>
+        <div id="tabs-4">
+          <div style="text-align:center;">
+            <div class="tutor_content">
+              <div><image class="tutor_img" src="/assets/tutorial/4-1.png"></div><br>
+              <div class="tutor_txt">콩나물(1줌)<br>
+                <p style="color:orange;"><b>손으로 자연스럽게<br>한가득 쥐어요.</b></p>
+              </div>
+            </div>&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <div><image class="tutor_img" src="/assets/tutorial/4-2.png"></div><br>
+              <div class="tutor_txt">시금치(1줌)<br>
+                <p style="color:orange;"><b>손으로 자연스럽게<br>한가득 쥐어요.</b></p>
+              </div>
+            </div>&nbsp;&nbsp;&nbsp;
+            <div class="tutor_content">
+              <div><image class="tutor_img" src="/assets/tutorial/4-3.png"></div><br>
+              <div class="tutor_txt">국수(1줌=1인분)<br>
+                <p style="color:orange;"><b>500원 동전 굵기로<br>가볍게 쥐어요.</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="tabs-5">
+          <div style="text-align:center;">
+            <div style="color:orange;"><b>대파 다지기</b></div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-1.png">
+              <div class="tutor_txt">대파는 끝을 0.5cm<br>정도 남기고 결대로<br>길게 칼집을 넣어요.</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-2.png">
+              <div class="tutor_txt">직각으로<br>돌려 썰어요.</div><br><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-3.png">
+              <div class="tutor_txt">칼로 조금 더<br>잘게 다져요.</div><br><br>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div style="color:orange;"><b>마늘 다지기</b></div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-4.png">
+              <div class="tutor_txt">마늘 꼭지를<br>제거해요.</div><br><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-5.png">
+              <div class="tutor_txt">칼등으로<br>눌러 으깨요.</div><br><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-6.png">
+              <div class="tutor_txt">칼로 조금 더<br>잘게 다져요.</div><br><br>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div style="color:orange;"><b>양파 다지기</b></div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-7.png">
+              <div class="tutor_txt">꼭지 부분을 0.5cm<br>남기고 결을 따라<br>길게 칼집을 넣기.</div><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-8.png">
+              <div class="tutor_txt">직각으로<br>돌려 썰어요.</div><br><br>
+            </div>
+            <div class="tutor_content">
+              <image class="tutor_img" src="/assets/tutorial/5-9.png">
+              <div class="tutor_txt">칼로 조금 더<br>잘게 다져요.</div><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <script>
+    // $(document).ready(function(){
+    //   $( '#tabs' ).tabs(); 
+    // });
+    
+    $(function() {
+      $( '#tabs' ).tabs();
+    });
+  </script>
+  
+</footer>

@@ -6,7 +6,7 @@ class CreateDetailrecipes < ActiveRecord::Migration
       t.string :detailrecipe_image
       t.text :detailrecipe_content
       t.string :detailrecipe_voice
-      t.integer :tip_id
+      t.text :detailrecipe_tip
 
       t.timestamps null: false
     end

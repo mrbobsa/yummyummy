@@ -1,26 +1,156 @@
-<a href="/yumyum/index"><h1>레시피 페이지</h1></a>
+<!--세부 레시피-->
+  <div class="w-section section cover" id="features">
+    <div class="w-container">
+      <div class="recipe_info">
+        <div class="w-row">
+          <div class="w-col w-col-4">
+            <div class="w-clearfix">
+              <h1 class="recipe_title"><%= @bigrecipe.bigrecipe_name %></h1>
+              <p class="recipe_info_txt"><%= @recipepage.smallrecipe_content %></p>
+            </div>
+          </div>
+          <div class="w-col w-col-4 w-clearfix">
+            <div class="recipe_info_div"><img class="recipe_time" height="30" src="/assets/clock_bl.png">
+              <div class="recipe_time_txt"><b><%= @recipepage.smallrecipe_time %>분</b></div>
+            </div>
+            
+            <!-- 별점 표시 -->
+            <div class="recipe_info_div">
+              <% @recipepage.smallrecipe_level.times do %>
+                <img class="recipe_level" width="32" src="/assets/star.png">
+              <% end %>
+              <div class="recipe_level_txt"><b>난이도</b></div>
+            </div>
+            
+          </div>
+          <div class="w-col w-col-4">
+            <div class="w-clearfix">
+            <img class="tutorial_logo" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+            <img class="prt_btn" src="/assets/btn_prt.png"><img class="radio" height="50" src="/assets/btn_radio.png">
+            <img class="timer" height="50" src="/assets/btn_timer.png">
+            </div>
+          </div>
+        </div>
+        <div>
+          <% if duser_signed_in? %>
+            <p class="recipe_info_txt">나에게 없는 재료 : <% @my_empty.each do |m| %><%= m %>&nbsp; <% end %></p>
+          <% end %>  
+        </div>
+      </div>
+      
+      <!--레시피슬라이드-->
+      <div class="w-slider reciipe">
+        <div class="w-slider-mask slide_mask">
+            <div class="w-slide">
+              <div class="w-row">
+                <div class="w-col w-col-8 w-col-small-8"><img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
+                </div>
+                <div class="w-col w-col-4 w-col-small-4 recipe_process">
+                  <div class="recipe_txt">
+                    필요한 재료 : <% @sub_m.each do |x| %><%= x %>&nbsp; <% end %>
+                    <!--(height = auto, min = 150 max = 250)-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      
+      
+      <!-- slide controls -->
+      <div class="w-slider-arrow-left">
+        <div class="w-icon-slider-left slide_left"></div>
+      </div>
+      <div class="w-slider-arrow-right">
+        <div class="w-icon-slider-right slide_right"></div>
+      </div>
+        <div class="w-slider-nav w-round"></div>
+      </div>  
+    </div>  
+  </div>
+  
+  <!--좋아요,댓글,공유 섹션-->
+  <div class="w-section section recipe" id="pricing">
+    <div class="w-container">
+      <div class="w-clearfix like_div"><a href="/yumyum/recipescrap/<%= @recipepage.id %>"><img class="like_btn" src="/assets/heart_gr.png"></a>
+        <div class="count"><%= @recipepage.smallrecipe_heart %></div>
+        <img class="reply_img" src="/assets/reply_gr.png">
+        <div class="count"><%= @replycount %></div>
+        <img class="share_btn" src="/assets/share_gr.png">
+        <div class="count">공유하기</div>
+        <div class="reply_div">
+          <div class="w-form">
+            <form class="w-clearfix reply_form" id="email-form" name="email-form" data-name="Email Form" action ='/yumyum/smallreply/<%= @recipepage.id %>'>
+              <textarea class="w-input reply_write" id="Reply" placeholder="댓글을 입력하세요" name="reply" data-name="Reply"></textarea>
+              <input class="w-button reply_submit" type="submit" value="입력" data-wait="Please wait...">
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form</p>
+            </div>
+          </div>
+          <div class="reply_all">
+            <% @reply.each do |r| %>
+              <%= r.smallreply_email %> | <%= r.smallreply_content %> 
+              <a href="/yumyum/smallreply_del/<%= r.id %>">del</a><br>
+            <% end %>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="col-md-12 panel panel-default">
-    <div class="col-md-12 panel-body" style="float:left;">
-        <p><%= @recipepage.smallrecipe_image %></p>
-        <p><%= @recipepage.smallrecipe_name %> | <%= @recipepage.smallrecipe_heart %></p>
-    </div>
-    <% @recipepage.detailrecipes.each do |detailrecipe| %>
-    <div class="col-md-12 panel-body" style="text-align:center;">
-        <p><%= detailrecipe.detailrecipe_image %></p>
-        <p><%= detailrecipe.detailrecipe_content %> | <%= detailrecipe.detailrecipe_voice %></p>
-        <p style="color:red;">팁(이 부분은 ajax가 필요할듯... 바로바로 tipid 값을 받아올 수가 없음)</p>
-    </div>
-    <% end %>
-</div>
-<div class="col-md-12 panel panel-default">
-    <div class="col-md-12 panel-body" style="float:left; text-align:center;">
-        <% @recipepage.smallreplies.each do |smallreply| %>
-            <p>작성자 : <%= smallreply.smallreply_email %></p>
-            <p>내용 : <%= smallreply.smallreply_content %></p>
-            <% smallreply.smallreres.each do |smallrere| %>
-                <p>-> <%= smallrere.smallrere_email %> : <%= smallrere.smallrere_content %></p>
-            <% end %>
+
+  <div id="sequence" class="seq">
+
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        <li class="seq-in">
+          <div class="seq-model">
+            <img data-seq src="<%= @recipepage.smallrecipe_image.url %>" />
+          </div>
+
+          <div class="seq-title">
+            <h2 data-seq><%= @recipepage.smallrecipe_content %></h2>
+            <h3 data-seq> 필요한 재료 : <% @sub_m.each do |x| %><%= x %>&nbsp; <% end %></h3>
+          </div>
+        </li>
+        
+        <% @detail.each do |recipe| %>
+        <li>
+          <div class="seq-model">
+            <img data-seq src="<%= recipe.detailrecipe_image.url %>"/>
+          </div>
+
+          <div class="seq-title">
+            <h2 data-seq><%= recipe.detailrecipe_content %></h2>
+            <h3 data-seq><%= recipe.detailrecipe_tip %></h3>
+          </div>
+        </li>
         <% end %>
+      </ul>
     </div>
-</div>
+
+    <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
+      <button type="button" class="seq-prev" aria-label="Previous">Previous</button>
+      <button type="button" class="seq-next" aria-label="Next">Next</button>
+    </fieldset>
+    
+    <!--  하단 컨트롤바
+    <ul role="navigation" aria-label="Pagination" class="seq-pagination">
+      <li><a href="#step1" rel="step1" title="Go to slide 1"><img src="images/tn-model1.png" /></a></li>
+      <li><a href="#step2" rel="step2" title="Go to slide 2"><img src="images/tn-model2.png" /></a></li>
+      <li><a href="#step3" rel="step3" title="Go to slide 3"><img src="images/tn-model3.png" /></a></li>
+    </ul>
+    -->
+  </div>
+
+  <script src="/assets/imagesloaded.pkgd.min.js"></script>
+  <script src="/assets/hammer.min.js"></script>
+  <script src="/assets/sequence.min.js"></script>
+  <script src="/assets/sequence-theme.modern-slide-in.js"></script>
+
+  
+  

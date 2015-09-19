@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'fog'
+gem 'carrierwave'
 gem 'mini_magick'
 gem 'paperclip', '~> 4.1'
 gem 'devise'

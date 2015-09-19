@@ -1,0 +1,275 @@
+<h2>레시피만들기</h2>
+<hr>
+<!-- 큰 레시피 -->
+<form class="form-horizontal" action="/yumyum/recipedb" enctype="multipart/form-data" method="POST">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">요리이름</label>
+    <div class="col-sm-6">
+      <input type="text" name="title" class="form-control" value="<%= @bigrecipe.bigrecipe_name %>">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">카테고리</label>
+    <div class="col-sm-6">
+      <select class="form-control" name="category" value="<%= @bigrecipe.bigrecipe_category %>">
+        <option>밥</option>
+        <option>찌개</option>
+        <option>반찬</option>
+        <option>국</option>
+        <option>기타</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">완성이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="complete_image" class="form-control">
+    </div>
+  </div>
+<hr>
+
+<!-- 작은레시피 시작 -->
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">버전</label>
+    <div class="col-sm-6">
+      <input type="text" name="version" class="form-control" value="기본">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">소요시간</label>
+    <div class="col-sm-6">
+      <input type="number" name="time" class="form-control">
+    </div>
+  </div>
+  
+  <!-- 난이도 --><div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">난이도</label>
+    <div class="col-sm-6">
+      <select class="form-control" name="level">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </div>
+  <!-- 주재료 삭제
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">주재료</label>
+    <div class="col-sm-6">
+      <input type="text" name="main_material" class="form-control" placeholder="재료코드를 입력하세요">
+    </div>
+  </div>
+  -->
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">재료</label>
+    <div class="col-sm-6">
+      <input type="text" name="sub_material" class="form-control" placeholder="재료코드를 입력하세요(001,003,005)">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="content" rows="2" placeholder="내용을 입력하세요"></textarea>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">완성이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="complete_image2" class="form-control">
+    </div>
+  </div>
+  <!-- 작은레시피 끝 -->
+  
+  <!-- 세부레시피 시작 -->
+<h2>세부 레시피 작성</h2>
+<hr>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="detail_content" rows="2" placeholder="필수사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">팁</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="tip_content" rows="2" placeholder="선택사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">중간이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="detail_image" class="form-control">
+    </div>
+  </div>
+ <hr> 
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="detail_content2" rows="2" placeholder="필수사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">팁</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="tip_content2" rows="2" placeholder="선택사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">중간이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="detail_image2" class="form-control">
+    </div>
+  </div>
+  <!-- 세부레시피 끝 -->
+<hr>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">글쓰기</button>
+      <a href="/"><button type="submit" class="btn btn-default">취소</button></a>
+    </div>
+  </div>
+</form><h2>레시피만들기</h2>
+<hr>
+<!-- 큰 레시피 -->
+<form class="form-horizontal" action="/yumyum/recipedb" enctype="multipart/form-data" method="POST">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">요리이름</label>
+    <div class="col-sm-6">
+      <input type="text" name="title" class="form-control" placeholder="제목을 입력하세요">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">카테고리</label>
+    <div class="col-sm-6">
+      <select class="form-control" name="category">
+        <option>밥</option>
+        <option>찌개</option>
+        <option>반찬</option>
+        <option>국</option>
+        <option>기타</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">완성이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="complete_image" class="form-control">
+    </div>
+  </div>
+<hr>
+
+<!-- 작은레시피 시작 -->
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">버전</label>
+    <div class="col-sm-6">
+      <input type="text" name="version" class="form-control" value="기본">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">소요시간</label>
+    <div class="col-sm-6">
+      <input type="number" name="time" class="form-control">
+    </div>
+  </div>
+  
+  <!-- 난이도 --><div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">난이도</label>
+    <div class="col-sm-6">
+      <select class="form-control" name="level">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </div>
+  <!-- 주재료 삭제
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">주재료</label>
+    <div class="col-sm-6">
+      <input type="text" name="main_material" class="form-control" placeholder="재료코드를 입력하세요">
+    </div>
+  </div>
+  -->
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">재료</label>
+    <div class="col-sm-6">
+      <input type="text" name="sub_material" class="form-control" placeholder="재료코드를 입력하세요(001,003,005)">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="content" rows="2" placeholder="내용을 입력하세요"></textarea>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">완성이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="complete_image2" class="form-control">
+    </div>
+  </div>
+  <!-- 작은레시피 끝 -->
+  
+  <!-- 세부레시피 시작 -->
+<h2>세부 레시피 작성</h2>
+<hr>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="detail_content" rows="2" placeholder="필수사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">팁</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="tip_content" rows="2" placeholder="선택사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">중간이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="detail_image" class="form-control">
+    </div>
+  </div>
+ <hr> 
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="detail_content2" rows="2" placeholder="필수사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">팁</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="tip_content2" rows="2" placeholder="선택사항 입니다."></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">중간이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="detail_image2" class="form-control">
+    </div>
+  </div>
+  <!-- 세부레시피 끝 -->
+<hr>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">글쓰기</button>
+      <a href="/"><button type="submit" class="btn btn-default">취소</button></a>
+    </div>
+  </div>
+</form>

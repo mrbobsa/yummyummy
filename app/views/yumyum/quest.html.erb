@@ -4,17 +4,34 @@
     <button type="button" class="btn btn-default" onclick="location.href='/yumyum/quest'">질문</button>
     <button type="button" class="btn btn-default" onclick="location.href='/yumyum/pride'">자랑</button>
 </div>
+<button type="button" class="btn btn-default" style="text-align:right" onclick="location.href=
+    <% if duser_signed_in? %>
+       '/yumyum/writequest'
+    <% else %>
+       '/dusers/sign_in'
+    <% end %>">글쓰기</button>
 
+<!-- 질문게시판 본문 -->
 <% @article.each do |article| %>
 <div class="col-md-12 panel panel-default">
     <div class="col-md-12 panel-body">
-        <p><%= article.quest_title %><span style="float:right;"><%= article.quest_email %></span></p>
+        <p><%= article.quest_title %><span style="float:right;"><img src="<%= article.quest_image %>" style="width:20px; height:20px"/> <%= article.quest_email %></span>
+        <% ##if article.quest_email == current_duser.email %>
+            <a href="/yumyum/quest_del/<%= article.id %>">삭제</a></p>
+            <a href="/yumyum/quest_mod/<%= article.id %>">수정</a></p>
+        <% ##end %>    
         <hr style="width:100%; color:green; border:thin solid green">
-        <p><%= article.quest_image %></p>
         <p><%= article.quest_content %></p>
+        <!-- 댓글란 -->
         <% article.questreplies.each do |reply| %>
-            <p>-> <%= reply.questreply_email %> : <%= reply.questreply_content %></p>
+            <p>-> <%= reply.questreply_email %> : <%= reply.questreply_content %><a href="/yumyum/reply_del/<%= reply.id %>">삭제</a></p>
         <% end %>
     </div>
+    <form class="form-inline" action="/yumyum/questreply/<%= article.id %>" method="POST">
+      <div class="form-group">
+          <input type="text" name="content" class="form-control col-sm-6" placeholder="댓글을 입력하세요">
+          <button type="submit" class="btn btn-primary">작성</button>
+      </div>
+    </form>
 </div>
 <% end %>

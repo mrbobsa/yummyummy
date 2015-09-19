@@ -1,22 +1,29 @@
+<!-- 완료 -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>냠냠 "요리가 똑똑해집니다"</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  
-  <!-- Latest compiled and minified JavaScript -->
+
+  <!-- Material Design Lite Component -->
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-blue.min.css">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+<!--메뉴바,서치바 불러오기-->
+<%= render :partial => "yumyum/navbar" %>
 
 <%= yield %>
 
+<!--페이지 하단-->
+<%= render :partial => "yumyum/footer" %>
 </body>
 </html>

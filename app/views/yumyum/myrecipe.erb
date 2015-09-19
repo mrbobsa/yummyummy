@@ -1,0 +1,286 @@
+<!--찜하기/스크랩북-->
+<div class="w-section section main_content" id="main_content">
+  <div class="w-container">
+    <div class="w-row w-hidden-main w-hidden-medium w-hidden-small">
+      <div class="w-col w-col-9 w-col-tiny-9">
+        <h1 class="w-hidden-main w-hidden-medium w-hidden-small">찜한 게시물</h1>
+      </div>
+      <div class="w-col w-col-3 w-col-tiny-3"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button go_tuto_m" href="#main_content_m">튜토리얼</a>
+      </div>
+    </div>
+    <div class="w-row">
+      <div class="w-col w-col-9 w-col-small-6">
+        <h1 class="w-hidden-tiny">찜한 게시물</h1>
+      </div>
+      <div class="w-col w-col-3 w-col-small-6 w-hidden-tiny">
+        <h1>튜토리얼</h1>
+      </div>
+    </div>
+    <div class="w-row">
+      <div class="w-col w-col-9 w-col-small-6">
+        <div class="w-row">
+        <% @myrecipe.each do |r| %>
+         <% bigrecipe = Bigrecipe.find(r.bigrecipe_id) %>
+          <div class="w-col w-col-4">
+            <div class="w-clearfix scrap_wrapper">
+              
+              
+              
+              <div class="w-row title_row">
+                <div class="w-col w-col-8 w-col-small-6 w-col-tiny-6">
+                  <a href="/yumyum/smallrecipe/<%= r.id %>"><div class="rcp_card_title"><%= bigrecipe.bigrecipe_name %></div></a>
+                  <div class="difficulty">버전 : <%= r.smallrecipe_name %></div>
+                  <div class="difficulty">난이도 : <%= "별"*(r.smallrecipe_level) %></div>
+                </div>
+                <div class="w-col w-col-4 w-col-small-6 w-col-tiny-6 w-clearfix"><img class="time_img" width="64" src="/assets/clock_wh.png">
+                  <div class="time">10분</div>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              <a href="/yumyum/myrecipe_del/<%= r.id %>">제거</a>
+              <div class="hollow"></div>
+              <div class="button_wrapper">(아이콘) 공유하기</div>
+            </div>
+          </div>
+          <% end %>
+          <div class="w-col w-col-4"></div>
+          <div class="w-col w-col-4"></div>
+        </div>
+      </div>
+      <div class="w-col w-col-3 w-col-small-6 w-hidden-tiny">
+        <% @mytutor.each do |r| %>  
+        <div class="scrap_wrapper">
+          <div class="tuto_row">
+            <a href="/yumyum/tutorial/<%= r.id %>"><div class="rcp_card_title"><%= r.tutor_name %></div></a>
+            <div class="difficulty">별표 들어가는 div</div>
+          </div>
+          <div class="hollow"></div>
+          <div class="button_wrapper">(아이콘) 공유하기</div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-section w-hidden-main w-hidden-medium w-hidden-small main_content_m" id="main_content_m">
+  <div class="w-container w-hidden-main w-hidden-medium w-hidden-small">
+    <div class="w-row w-hidden-main w-hidden-medium w-hidden-small">
+      <div class="w-col w-col-9 w-col-tiny-9 w-hidden-main w-hidden-medium w-hidden-small">
+        <h1 class="w-hidden-main w-hidden-medium">튜토리얼</h1>
+      </div>
+      <div class="w-col w-col-3 w-col-tiny-3 w-hidden-main w-hidden-medium w-hidden-small"><a class="w-hidden-main w-hidden-medium w-hidden-small w-button go_scrap_m" href="#main_content">찜</a>
+      </div>
+    </div>
+    <div class="w-row w-hidden-main w-hidden-medium w-hidden-small">
+      <% @mytutor.each do |r| %>
+      <div class="w-col w-col-4">
+        <div class="w-hidden-main w-hidden-medium w-hidden-small w-clearfix scrap_wrapper">
+          <div class="w-row w-hidden-main w-hidden-medium w-hidden-small title_row">
+            <div class="w-col w-col-8 w-col-small-6 w-col-tiny-6 w-hidden-main w-hidden-medium w-hidden-small">
+              <a href="/yumyum/tutorial/<%= r.id %>"><div class="recipe_title"><%= r.tutor_name %></div></a>
+            </div>
+            <div class="w-col w-col-4 w-col-small-6 w-col-tiny-6 w-clearfix"><img class="time_img" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" width="50">
+            </div>
+          </div>
+          <div class="time">20분</div>
+          <div class="hollow"></div>
+          <div class="button_wrapper">(아이콘)공유하기-가운데정렬</div>
+        </div>
+      </div>
+      <% end %>
+      <div class="w-col w-col-4"></div>
+      <div class="w-col w-col-4"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 기존코드
+<h1>나의 레시피 모음</h1>
+
+<div class="row">
+    <div class="col-md-offset-1">
+        <% @myrecipe.each do |r| %>
+            <a href="/yumyum/smallrecipe/<%= r.id %>">
+                <div class="col-md-3 box" style="border: 1px gray solid; margin-left:20px">
+                    <%= r.smallrecipe_image %><%= r.smallrecipe_name %>
+                    <a href="/yumyum/myrecipe_del/<%= r.id %>">
+                        제거
+                    </a>
+                </div>
+            </a>
+        <% end %>
+    </div>
+</div>
+ -->
+<!-- 기존코드
+<h1>나의 튜토리얼</h1>
+
+<div class="row">
+    <div class="col-md-offset-1">
+        <% @mytutor.each do |r| %>
+            <a href="/yumyum/tutorial/<%= r.id %>">
+                <div class="col-md-3 box" style="border: 1px gray solid; margin-left:20px">
+                    <%= r.tutor_image %><%= r.tutor_name %>
+                    <a href="/yumyum/mytutor_del/<%= r.id %>">
+                        제거
+                    </a>
+                </div>
+            </a>    
+        <% end %>
+    </div>
+</div> -->
+
+
+<!--<style>-->
+<!--body {-->
+<!--  font-family: Roboto, sans-serif;-->
+<!--  color: #333;-->
+<!--  font-size: 16px;-->
+<!--  line-height: 22px;-->
+<!--}-->
+<!--h1 {-->
+<!--  margin-bottom: 19px;-->
+<!--  font-size: 38px;-->
+<!--  line-height: 44px;-->
+<!--  font-weight: 500;-->
+<!--}-->
+<!--h2 {-->
+<!--  margin-top: 0px;-->
+<!--  margin-bottom: 10px;-->
+<!--  font-size: 30px;-->
+<!--  line-height: 36px;-->
+<!--  font-weight: 400;-->
+<!--  text-align: center;-->
+<!--}-->
+<!--h3 {-->
+<!--  margin-top: 0px;-->
+<!--  margin-bottom: 15px;-->
+<!--  font-size: 22px;-->
+<!--  line-height: 30px;-->
+<!--  font-weight: 500;-->
+<!--}-->
+<!--h4 {-->
+<!--  margin-top: 10px;-->
+<!--  margin-bottom: 10px;-->
+<!--  font-size: 18px;-->
+<!--  line-height: 24px;-->
+<!--  font-weight: 700;-->
+<!--}-->
+<!--h5 {-->
+<!--  margin-top: 10px;-->
+<!--  margin-bottom: 10px;-->
+<!--  font-size: 14px;-->
+<!--  line-height: 20px;-->
+<!--  font-weight: 700;-->
+<!--}-->
+<!--h6 {-->
+<!--  margin-top: 10px;-->
+<!--  margin-bottom: 10px;-->
+<!--  font-size: 12px;-->
+<!--  line-height: 18px;-->
+<!--  font-weight: 700;-->
+<!--}-->
+<!--p {-->
+<!--  margin-bottom: 5px;-->
+<!--}-->
+<!--.section {-->
+<!--  padding-top: 70px;-->
+<!--  padding-bottom: 70px;-->
+<!--}-->
+<!--.section.main_content {-->
+<!--  background-color: #dde7ed;-->
+<!--}-->
+<!--.scrap_wrapper {-->
+<!--  background-image: url('../images/example-bg.png');-->
+<!--  background-position: 0px 0px;-->
+<!--  background-size: 125px;-->
+<!--}-->
+<!--.title_row {-->
+<!--  background-color: rgba(223, 232, 228, 0.8);-->
+<!--}-->
+<!--.time_img {-->
+<!--  float: right;-->
+<!--}-->
+<!--.time {-->
+<!--  float: right;-->
+<!--  color: white;-->
+<!--}-->
+<!--.hollow {-->
+<!--  height: 100px;-->
+<!--}-->
+<!--.button_wrapper {-->
+<!--  background-color: transparent;-->
+<!--  text-align: center;-->
+<!--}-->
+<!--.button_wrapper:hover {-->
+<!--  background-color: rgba(223, 232, 228, 0.8);-->
+<!--}-->
+<!--.tuto_row {-->
+<!--  background-color: rgba(223, 232, 228, 0.8);-->
+<!--}-->
+<!--html.w-mod-js *[data-ix="fade-in-on-load"] {-->
+<!--  opacity: 0;-->
+<!--  -webkit-transform: translate(0px, 24px);-->
+<!--  -ms-transform: translate(0px, 24px);-->
+<!--  transform: translate(0px, 24px);-->
+<!--}-->
+<!--html.w-mod-js *[data-ix="fade-in-on-scroll"] {-->
+<!--  opacity: 0;-->
+<!--  -webkit-transform: translate(0px, 24px);-->
+<!--  -ms-transform: translate(0px, 24px);-->
+<!--  transform: translate(0px, 24px);-->
+<!--}-->
+<!--@media (max-width: 991px) {-->
+<!--}-->
+<!--@media (max-width: 767px) {-->
+<!--  h3 {-->
+<!--    margin-bottom: 8px;-->
+<!--  }-->
+<!--  .section {-->
+<!--    padding-top: 43px;-->
+<!--    padding-bottom: 43px;-->
+<!--    text-align: center;-->
+<!--  }-->
+<!--  .recipe_title {-->
+<!--    text-align: left;-->
+<!--  }-->
+<!--  .difficulty {-->
+<!--    text-align: left;-->
+<!--  }-->
+<!--}-->
+<!--@media (max-width: 479px) {-->
+<!--  h1 {-->
+<!--    margin-top: 0px;-->
+<!--    margin-bottom: 0px;-->
+<!--  }-->
+<!--  .main_content_m {-->
+<!--    background-color: #dde7ed;-->
+<!--  }-->
+<!--  .go_tuto_m {-->
+<!--    padding-top: 0px;-->
+<!--    padding-bottom: 0px;-->
+<!--    background-color: #ddd;-->
+<!--    color: black;-->
+<!--    font-size: 12px;-->
+<!--  }-->
+<!--  .go_tuto_m:hover {-->
+<!--    background-color: #fe7815;-->
+<!--  }-->
+<!--  .go_scrap_m {-->
+<!--    background-color: #ddd;-->
+<!--    color: black;-->
+<!--    font-size: 12px;-->
+<!--  }-->
+<!--  .go_scrap_m.w--current {-->
+<!--    padding-left: 25px;-->
+<!--  }-->
+<!--  .go_scrap_m.w--current:hover {-->
+<!--    background-color: #fe7815;-->
+<!--  }-->
+<!--}-->
+<!--</style>-->
+

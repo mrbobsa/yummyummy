@@ -1,29 +1,168 @@
-<h1>메인페이지</h1>
-<% if duser_signed_in? %>
-<a href="/dusers/sign_out">로그아웃</a>
-<img src="<%= @image %>" style="height:100px; width:100px"/>
-<%= current_duser.email %>
-<% else %>
-<a href="/dusers/sign_in">로그인</a>
-<a href="/dusers/sign_up">회원가입</a>
-<% end %>
-
-<div class="col-md-12 panel panel-default">
-  <div class="col-md-12 panel-body">
-    <div class="col-md-3 panel-main" style="text-align:center;">
-        <p><%= @recipe.bigrecipe_image %></p>
-        <p><%= @recipe.bigrecipe_category %> : <%= @recipe.bigrecipe_name %></p>
-    </div>
-    <div class="col-md-9 panel-kind">
-        <% @recipe.smallrecipes.each do |smallrecipe| %>
-        <div class="col-md-12 panel panel-default">
-          <div class="col-md-12 panel-body">
-              <a href="/yumyum/smallrecipe/<%= smallrecipe.id %>"><p><%= smallrecipe.smallrecipe_name %> | <%= smallrecipe.smallrecipe_heart %></p></a>
+<!--하...씨...왜 다 날아간거야.... 갑자기 코드가 없었음...-->
+<!--점보트론-->
+<section class="intro" id="section-intro">
+	<div class="intro-video-container">
+		<div class="intro-video">
+			<video id="video-iframe" src="http://d2startup.com/_media/D2SF_MAIN.mp4" width="1280" height="720" autoplay=1 loop="" style="width: 1436px; height: 807.75px; margin-top: -159.9px;"></video>
+		</div>
+		<div class="intro-video-shield"> </div>
+	</div>
+	<div class="intro-contents">
+		<div class="intro-splash">
+			<div class="contents">
+				<h1>D2 Startup Factory는<br class="br-mobile"> 기술의 무한한<br class="br-pc">가능성에<br class="br-mobile"> 도전하는 Tech Startup과<br class="br-mobile"> 함께합니다.</h1>
+					<h2>NAVER Tech Startup Accelerator</h2>
+			</div>
+		</div>
+	</div>
+</section>
+<!--<div class="w-section jumbo">
+    <div class="w-row">
+      <div class="w-col w-col-3 jumbo_grid">
+        
+        미니프로필 여기에 루비문법 넣기
+        <% if duser_signed_in? %>
+        <div class="mini_profile">
+          <div class="w-clearfix mini_profile_status">
+            <div class="mini_refrig_handle1"></div>
+            <img class="mini_profile_photo" src="<%= current_duser.user_image %>">
+            <div class="mini_profile_id"><strong><%= current_duser.user_nickname %>님의 냉장고</strong><span id="close" style="float:right;">[x]</span>
+            </div>
           </div>
+          <div class="mini_profile_refrig">
+            <div class="mini_refrig_handle2"></div>
+            루비 돌림
+            <% @materialcode.each do |x| %>
+              <% material = Material.find(x) %>
+                <div class="mini_refrig_resource"><img class="mini_profile_resource" src="<%= material.normal_image %>">
+                  <div class="mini_profile_resource_txt"><strong><%= material.material_name %></strong>
+                  </div>
+                </div>
+            <% end %>
+          </div><a class="w-button mini_profile_more_btn" href="/yumyum/material/<%= current_duser.id %>">재료 더보기</a>
         </div>
         <% end %>
+        여기에 루비문법 종료하기
+        
+        
+      </div>
+      <div class="w-col w-col-2 jumbo_grid">
+        <div class="jumbo_detail"><img class="jumbo_detail_img" src="/assets/input_wh.png">
+          <div class="jumbo_detail_txt"><strong>내가 가진 재료를<br>등록하고</strong>
+          </div>
+        </div>
+      </div>
+      <div class="w-col w-col-2 jumbo_grid">
+        <div class="jumbo_detail"><img class="jumbo_detail_img" src="/assets/cooktray_wh.png">
+          <div class="jumbo_detail_txt"><strong>가능한 레시피를<br>추천받으세요</strong>
+          </div>
+        </div>
+      </div>
+      <div class="w-col w-col-2 jumbo_grid">
+        <div class="jumbo_detail"><img class="jumbo_detail_img" src="/assets/chef_wh.png">
+          <div class="jumbo_detail_txt"><strong>누구나 손쉽게<br>따라할 수 있습니다</strong>
+          </div>
+        </div>
+      </div>
+      <div class="w-col w-col-3 jumbo_grid"></div>
     </div>
-  </div>
-</div>
-
-<a href="/yumyum/quest"><h2>게시판</h2></a>
+  </div>-->
+  
+  <!--레시피 부분-->
+  <div class="w-section section content" id="pricing">
+    <div class="w-container">
+      <h4 class="main_text3">"냠냠"과 함께라면 요리가 쉬워집니다.</h4>
+      <div class="w-row">
+        
+        <!--레시피카드-->
+      <% @recipe.each do |r| %>
+        <% smallrecipe = r.smallrecipes.where('smallrecipe_name' => '기본').take %>
+        <% recipe_m = Recipecold.where('smallrecipe_id' => smallrecipe.id) %>
+         <% if duser_signed_in? %>
+          <% user_m = DusersMaterial.where('duser_id' => current_duser.id) %>
+          <% empty_m = [] #나에게 없는 재료코드 %>
+          <% noempty_m = [] #나에게 있는 재료 코드 %>
+          <% @my_empty = [] # 나에게 없는 재료명 %>
+          <% recipe_m.each do |recipe| %>
+          <%   find_m = user_m.where('material_id' => recipe.recipecold_material).take %>
+          <%   if find_m.nil? %>
+          <%     empty_m << recipe.recipecold_material %>
+          <%   else %>
+          <%     noempty_m << recipe.recipecold_material %>
+          <%  end %>
+          <% end %>
+         <% end %>
+          <a href='/yumyum/smallrecipe/<%= r.id %>'>
+          <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">
+            
+            <div class="recipe_card">
+              <img class="recipe_card_img" src="<%= r.bigrecipe_image %>">
+              
+              <div class="rcp_card_title"><%= r.bigrecipe_name %></div>
+              
+                <div class="w-row title_row">
+                  <div class="w-col w-col-7 w-col-small-7 w-col-tiny-7 w-clearfix">
+                    
+                    <div class="recipe_category"><%= r.bigrecipe_category %></div>
+                    <div class="difficulty">난이도</div>
+                      <% smallrecipe.smallrecipe_level.times do %>
+                        <img class="star_rate" src="/assets/star.png">
+                      <% end %>
+                  </div>
+                  
+                  
+                  <div class="w-col w-col-5 w-col-small-5 w-col-tiny-5 w-clearfix">
+                    <div class="time"><%= smallrecipe.smallrecipe_time %>분</div>
+                    <img class="time_img" src="/assets/clock_gr.png">
+                  
+                  <% if duser_signed_in? %>
+                    <div class="material_con"><strong>재료&nbsp;&nbsp;</strong><%= noempty_m.count %>/<%= recipe_m.count %>개</div>
+                  <% else %>
+                    <div class="material_con"><strong>재료&nbsp;&nbsp;</strong><%= recipe_m.count %>개</div>
+                  <% end %>
+                  </div>
+                </div>
+                
+                <div class="btn_wrapper">
+                  <div class="w-row">
+                    <div class="w-col w-col-4">
+                      <div class="w-clearfix" style="text-align:center;">
+                        <img class="good_ico" src="/assets/heart_gr.png">
+                        <div class="good_num"><%= smallrecipe.smallrecipe_heart %></div>
+                      </div>
+                    </div>
+                    <div class="w-col w-col-4">
+                      <div class="w-clearfix" style="text-align:center;">
+                        <img class="reply_ico" src="/assets/reply_gr.png">
+                        <div class="reply_num"><%= Smallreply.where('smallrecipe_id' => smallrecipe.id).count %></div>
+                      </div>
+                    </div>
+                    <div class="w-col w-col-4">
+                      <div class="w-clearfix" style="text-align:center;"><img class="share_ico" src="/assets/share_gr.png">
+                        <div class="share">공유</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </a>  
+        <% end %>
+        <!--레시피카드끝-->
+       <!-- <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">-->
+          
+       <!-- <div class="plan-wrapper" data-ix="fade-in-on-scroll"></div>-->
+       
+       <!--</div>-->
+       <!-- <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">-->
+          
+       <!--<div class="plan-wrapper" data-ix="fade-in-on-scroll"></div>-->
+        
+       <!-- </div>-->
+       <!-- <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">-->
+        
+       <!-- <div class="plan-wrapper" data-ix="fade-in-on-scroll"></div>-->
+        
+        </div>
+      </div>
+    </div>

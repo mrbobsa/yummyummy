@@ -4,7 +4,7 @@ class Duser::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:duser).permit(:user_nickname, :user_image, :email, :password, :password_confirmation, :current_password, :user_favorite)
+    params.require(:duser).permit(:user_nickname, :user_image, :email, :password, :password_confirmation, :current_password, :user_favorite)   
   end #6. signup은 controller명입니다. controller만들때 사용했던 이름을 넣어주세요.
 
   def account_update_params

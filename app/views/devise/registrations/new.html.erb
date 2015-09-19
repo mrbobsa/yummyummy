@@ -1,44 +1,117 @@
-<h2>Sign up</h2>
+<!--회원가입 완성-->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="w-section main_login">
+    <div class="w-container">
+      <div class="w-form wrap_login">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <div>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                
+                <label class="label_txt" for="name">E-mail</label>
+              </div>
+              <div class="w-col w-col-8 w-clearfix">
+                <%= f.email_field :email, :class => 'w-input txt_form', autofocus: true %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                <label class="label_txt" for="name-2">별명</label>
+              </div>
+              <div class="w-col w-col-8 w-clearfix">
+                <%= f.text_field :user_nickname, :class => 'w-input txt_form' %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+              <% if @minimum_password_length %>
+                <label class="label_txt" for="name-3">비밀번호<br>
+                <p style="font-size: 12px;color:gray;"><em ><%= @minimum_password_length %> 자 이상</em><% end %></p></label>
+              </div>
+              <div class="w-col w-col-8 w-clearfix">
+                <%= f.password_field :password, :class => 'w-input txt_form', autocomplete: "off" %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                <label class="label_txt" for="name-4">비밀번호 확인</label>
+              </div>
+              <div class="w-col w-col-8 w-clearfix">
+                <%= f.password_field :password_confirmation, :class => 'w-input txt_form', autocomplete: "off" %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                <label class="label_txt" for="name-5">프로필 사진</label>
+              </div>
+              <div class="w-col w-col-8 w-clearfix">
+                <%= f.file_field :user_image %>
+              </div>
+          </div> 
+        </div>
+          <%= f.submit "회원가입", :class => 'w-button sign_up_submit' %>
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form</p>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+
+<!--<h2>Sign up</h2>-->
+
+<!--<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
+<!--  <%= devise_error_messages! %>-->
+
+<!--  <div class="field">-->
+<!--    <%= f.label :email %><br />-->
+<!--    <%= f.email_field :email, :class => 'w-input txt_form', autofocus: true %>-->
+<!--  </div>-->
   
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :user_nickname %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :nickname %><br />-->
+<!--    <%= f.text_field :user_nickname, :class => 'w-input txt_form' %>-->
+<!--  </div>-->
   
-  <div class="field">
-    <%= f.label :favorite %><br />
-    <%= f.text_field :user_favorite %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :favorite %><br />-->
+<!--    <%= f.text_field :user_favorite, :class => 'w-input txt_form' %>-->
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :password %>-->
+<!--    <% if @minimum_password_length %>-->
+<!--    <em>(<%= @minimum_password_length %> characters minimum)</em>-->
+<!--    <% end %><br />-->
+<!--    <%= f.password_field :password, :class => 'w-input txt_form', autocomplete: "off" %>-->
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :password_confirmation %><br />-->
+<!--    <%= f.password_field :password_confirmation, :class => 'w-input txt_form', autocomplete: "off" %>-->
+<!--  </div>-->
   
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :user_image %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :image %><br />-->
+<!--    <%= f.file_field :user_image %>-->
+<!--  </div><br/>-->
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+<!--  <div class="actions">-->
+<!--    <%= f.submit "회원가입", :class => 'w-button sign_up_submit' %>-->
+<!--  </div>-->
+<!--<% end %>-->
 
-<%= render "devise/shared/links" %>
+<!--<%= render "devise/shared/links" %>-->

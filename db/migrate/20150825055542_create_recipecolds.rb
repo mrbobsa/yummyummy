@@ -3,7 +3,7 @@ class CreateRecipecolds < ActiveRecord::Migration
     create_table :recipecolds do |t|
       
       t.string :recipecold_material
-      t.boolean :recipecold_trait
+      t.boolean :recipecold_trait, default: false
       t.integer :smallrecipe_id
 
       t.timestamps null: false

@@ -1,0 +1,278 @@
+<!-- 완료 -->
+
+<!--메인에 뜨는 미니 프로필-->
+<% if duser_signed_in? %>
+  <div class="w-section mini_profile_overlay" style="width:100%">
+    <div class="w-row">
+      <div class="w-col w-col-3">
+          <div class="w-clearfix after_login">
+                  <div class="mini_profile">
+                    <a href="/yumyum/userinfo/<%= current_duser.id %>"><img class="mini_profile_phoro" src="<%= @image %>" height="100"></a>
+                    <div class="mini_profile_id"><%= current_duser.email %></div>
+                    <div class="mini_profile_text">내가 가진 재료</div>
+                  </div>
+                <div class="mini_refrig">
+                    <div class="w-row">
+                       <% @material.each do |m| %>
+                           <img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
+                           <%= m.material_name %>
+                         <a href="/yumyum/mymaterial_del/<%= m.material_code %>">삭제</a>
+                       <% end %>
+                      <!-- <div class="w-col w-col-3 w-col-small-3 w-col-tiny-3"> <div class="mini_recipe_block"> 깨질경우 활용할 태그-->
+                    </div><a class="w-button refrig_more" href="/yumyum/material">재료 더보기</a>
+                </div>
+          </div>
+      </div>
+      <div class="w-col w-col-6 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny"></div>
+      <div class="w-col w-col-3 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny"></div>
+    </div>
+  </div>
+<% end %>
+
+  
+
+<!--메인(점보트론느낌)-->
+
+  <div class="w-section section main" id="top">
+    <div class="w-row">
+      <div class="w-col w-col-3"></div>
+      <div class="w-col w-col-6">
+        <h2 class="main_text1">"갖고있는 재료로 쉽게 만들 수 있는 요리를 추천받으세요"</h2>
+        <h3 class="main_text2">요리가 쉬워지는 마법의 주문 "냠냠"</h3>
+      </div>
+      <div class="w-col w-col-3 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny"></div>
+    </div>
+  </div>
+
+
+<!--하단 레시피 띄우는 부분-->
+
+  <div class="w-section section content" id="pricing">
+    <div class="w-container">
+      <h3 class="main_text3">만들어볼까요?</h3>
+      <div class="w-row">
+        
+        <% @recipe.each do |r| %>
+          <% smallrecipe = r.smallrecipes.where('smallrecipe_name' => '기본').take %>
+
+            <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
+             <a href="/yumyum/smallrecipe/<%= smallrecipe.id %>">
+              <div class="recipe_wrapper"> <img class="recipe_image" src="<%= r.bigrecipe_image %>">
+              <div class="grad"></div>
+                <div class="w-row title_row">
+                  <div class="w-col w-col-8 w-col-small-8 w-col-tiny-8">
+                    <div class="recipe_title"><%= r.bigrecipe_name %></div>
+                    <div class="recipe_category"><%= r.bigrecipe_category %></div>
+                    <div class="difficulty">난이도 : <%= "별"*(smallrecipe.smallrecipe_level) %></div>
+                  </div>
+                  <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4" >
+                    <div class="w-clearfix time_wrapper"><img class="time_img" src="../assets/clock.png" width="30">
+                      <div class="time"><%= smallrecipe.smallrecipe_time %>분</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hollow"><a href="/yumyum/smallrecipe/<%= smallrecipe.id %>"></a><a href="/yumyum/recipeedit/<%= r.id %>"><p>수정</p></a></div>
+                <div class="w-row button_wrapper">
+                  <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+                    <div class="good_wrapper">
+                    <img class="good" src="../assets/heart.png" width="30">
+                      <div class="good_num"><%= smallrecipe.smallrecipe_heart %></div>
+                    </div>
+                  </div>
+                  
+                  <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+                    <div class="share_wrapper"><img class="share" src="../assets/share.png" width="30">
+                      <div class="share">공유하기</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            
+    <!--레시피 카드 거의 최종ver.-->
+    
+            <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
+              <div class="recipe_wrapper">
+                <div class="w-row title_row">
+                  <div class="w-col w-col-9 w-col-small-9 w-col-tiny-9">
+                    <div class="recipe_title">애호박전</div>
+                    <div class="recipe_category">반찬</div>
+                    <div class="difficulty">난이도:별별별별별</div>
+                  </div>
+                  <div class="w-col w-col-3 w-col-small-3 w-col-tiny-3">
+                    <div class="time_wrapper"><img class="time_img" width="35" src="../assets/clock.png">
+                      <div class="time">10분</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="material_con"><strong>재료</strong>
+                  <br>7개 / 10개</div>
+                <div class="button_wrapper">
+                  <div class="w-row">
+                    <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+                      <div class="w-clearfix good_wrapper"><img class="good_img" src="../assets/heart.png">
+                        <div class="good_num">30</div>
+                      </div>
+                    </div>
+                    <div class="w-col w-col-6 w-col-small-6 w-col-tiny-6">
+                      <div class="w-clearfix share_wrapper"><img class="share_img" src="../assets/share.png">
+                        <div class="share">공유</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6"></div>
+          </a>  
+        <% end %>
+          
+        <a href="/yumyum/recipewrite">레시피 만들기</a>
+      </div>
+    </div>
+  </div>
+  
+
+
+<!-- 기존코드 
+<% @recipe.each do |r| %>
+<div class="col-md-12 panel panel-default">
+  <div class="col-md-12 panel-body">
+    <div class="col-md-3 panel-main" style="text-align:center;">
+        <p><img src="<%= r.bigrecipe_image %>" style="width:100px; height:100px"></p>
+        <p><%= r.bigrecipe_category %> : <%= r.bigrecipe_name %></p>
+    </div>
+    <div class="col-md-9 panel-kind">
+      <% r.smallrecipes.each do |smallrecipe| %>
+        <div class="col-md-12 panel panel-default">
+          <div class="col-md-12 panel-body">
+              <a href="/yumyum/smallrecipe/<%= smallrecipe.id %>"><p><%= smallrecipe.smallrecipe_name %> | <%= smallrecipe.smallrecipe_heart %> | <%= smallrecipe.smallrecipe_time %>분 | 난이도 : <%= "별"*(smallrecipe.smallrecipe_level) %></p></a>
+              <% unless current_duser.nil? %>
+                <% if current_duser.admin? %>
+                  <span style="float:right;"><a href="/yumyum/smalledit/<%= smallrecipe.id %>">수정</a> <a href="/yumyum/smalldelete/<%= smallrecipe.id %>">삭제</a></>
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %> -->
+
+
+<!--레시피 카드에 css가 안먹어져서 style태그로 입혀본 것입니다. 추후 index.css로 옮길 예정입니다.-->
+<style>
+.recipe_wrapper {
+  display: block;
+  width: 105%;
+  background-image: url('../assets/recipe_thumb.jpg');
+  background-position: 50% 0px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.49) 0px 40px 50px 5px inset;
+}
+.recipe_title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: white;
+  font-size: 22px;
+  text-shadow: black 1px 1px 6px, black 0px 1px 0px;
+}
+.difficulty {
+  padding-left: 10px;
+  color: white;
+  text-shadow: black 1px 1px 6px, black 0px 1px 0px;
+}
+.recipe_category {
+  padding-left: 10px;
+  color: white;
+  text-shadow: black 1px 1px 6px, black 0px 1px 0px;
+}
+.time_wrapper {
+  text-align: center;
+}
+.time {
+  color: white;
+  text-shadow: black 1px 1px 6px, black 0px 1px 0px;
+}
+.time_img {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.title_row {
+  width: 100%;
+  height: 160px;
+}
+.good_wrapper {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.good_img {
+  width: 30px;
+  margin: 5px;
+  float: left;
+}
+.good_num {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  color: black;
+}
+.share_wrapper {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.share_img {
+  width: 30px;
+  margin: 5px;
+  float: left;
+}
+.share {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  color: black;
+}
+.content {
+  padding-bottom: 15px;
+  background-color: #dde7ed;
+}
+.material_con {
+  height: 50px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  color: white;
+  font-size: 17px;
+  text-align: right;
+  text-shadow: black 0px 1px 0px, black 1px 1px 6px;
+}
+@media (max-width: 991px) {
+  .recipe_wrapper {
+    width: 105%;
+  }
+  .title_row {
+    height: 100px;
+  }
+}
+@media (max-width: 767px) {
+  .recipe_wrapper {
+    background-position: 50% 0px;
+    background-size: 100%;
+  }
+  .title_row {
+    height: 180px;
+  }
+}
+@media (max-width: 479px) {
+  .recipe_wrapper {
+    background-position: 50% 100%;
+  }
+  .title_row {
+    height: 100px;
+  }
+}
+</style>

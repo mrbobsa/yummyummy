@@ -3,10 +3,9 @@ class CreateMaterials < ActiveRecord::Migration
     create_table :materials do |t|
       
       t.string :material_code
-      t.string :material_normal
-      t.string :material_perished
-      t.string :material_gray
+      t.string :normal_image
       t.string :material_name
+      t.string :material_category
 
       t.timestamps null: false
     end

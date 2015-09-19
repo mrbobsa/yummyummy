@@ -1,0 +1,28 @@
+<h2>질문수정</h2>
+<hr>
+<form class="form-horizontal" action="/yumyum/quest_mod2/<%= @quest.id %>" method="GET">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
+    <div class="col-sm-6">
+      <input type="email" name="email" class="form-control" id="inputEmail3" value="<%= current_duser.email %>" readonly="readonly">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">제목</label>
+    <div class="col-sm-6">
+      <input type="text" name="title" class="form-control" id="inputtitle" value="<%= @quest.quest_title %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputcontent3" class="col-sm-2 control-label">내용</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="content" rows="8"><%= @quest.quest_content %></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">수정</button>
+      <a href="/yumyum/quest"><button type="submit" class="btn btn-default">취소</button></a>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+<h1>재료를 추가하세요</h1>
+
+<form class="form-horizontal" action="/yumyum/materialdb" enctype="multipart/form-data" method="POST">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">재료코드</label>
+    <div class="col-sm-6">
+      <input type="text" name="code" class="form-control" placeholder="코드를 입력하세요">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">재료이름</label>
+    <div class="col-sm-6">
+      <input type="text" name="name" class="form-control" placeholder="재료명을 입력하세요">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">카테고리</label>
+    <div class="col-sm-6">
+      <select class="form-control" name="category">
+        <option>채소</option>
+        <option>해물</option>
+        <option>육류</option>
+        <option>가공식품</option>
+        <option>소스</option>
+        <option>기타</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">기본이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="basic" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">선택이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="selected" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputtitle3" class="col-sm-2 control-label">변질이미지</label>
+    <div class="col-sm-6">
+      <input type="file" name="modified" class="form-control">
+    </div>
+  </div>
+<hr>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">글쓰기</button>
+      <a href="/"><button type="submit" class="btn btn-default">취소</button></a>
+    </div>
+  </div>
+</form>
