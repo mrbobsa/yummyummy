@@ -1,11 +1,11 @@
 // Place all the styles related to the yumyum controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "base/normalize.css";
-@import "base/webflow.css";
-@import "base/index.css";
-@import "base/sequence-theme.modern-slide-in.min.css";
-@import "base/sequence-theme.modern-slide-in.css";
+@import "base/normalize.scss";
+@import "base/webflow.scss";
+@import "base/index.scss";
+@import "base/sequence-theme.modern-slide-in.min.scss";
+@import "base/sequence-theme.modern-slide-in.scss";
 
 
 @import "partials/mixins";

@@ -1,20 +1,29 @@
+<head>
+  <style>
+    .navigation {
+      background-color:transparent;
+    }
+  </style>
+</head>  
 <!--하...씨...왜 다 날아간거야.... 갑자기 코드가 없었음...-->
 <!--점보트론-->
 <section class="intro" id="section-intro">
 	<div class="intro-video-container">
 		<div class="intro-video">
-			<video id="video-iframe" src="http://d2startup.com/_media/D2SF_MAIN.mp4" width="1280" height="720" autoplay=1 loop="" style="width: 1436px; height: 807.75px; margin-top: -159.9px;"></video>
+			<video id="video-iframe" src="/assets/videos/Intro_Video2.mp4" width="1280" height="720" autoplay="" loop="" style="width: 1436px; height: 807.75px; margin-top: -159.9px;"></video>
 		</div>
 		<div class="intro-video-shield"> </div>
 	</div>
 	<div class="intro-contents">
-		<div class="intro-splash">
-			<div class="contents">
-				<h1>D2 Startup Factory는<br class="br-mobile"> 기술의 무한한<br class="br-pc">가능성에<br class="br-mobile"> 도전하는 Tech Startup과<br class="br-mobile"> 함께합니다.</h1>
-					<h2>NAVER Tech Startup Accelerator</h2>
-			</div>
-		</div>
-	</div>
+	  <div class="intro-splash">
+		  <div class="startchange">
+		  <div class="contents">
+			  <h1>D2 Startup Factory는<br class="br-mobile"> 기술의 무한한<br class="br-pc">가능성에<br class="br-mobile"> 도전하는 Tech Startup과<br class="br-mobile"> 함께합니다.</h1>
+				  <h2>NAVER Tech Startup Accelerator</h2>
+		  </div>
+		  </div>
+	  </div>
+  </div>
 </section>
 <!--<div class="w-section jumbo">
     <div class="w-row">
@@ -166,3 +175,24 @@
         </div>
       </div>
     </div>
+
+<script>
+ $(document).ready(function(){       
+       var scroll_start = 0;
+       var startchange = $('#startchange');
+       var offset = startchange.offset();
+        if (startchange.length){
+       $(document).scroll(function() { 
+          scroll_start = $(this).scrollTop();
+          if(scroll_start > offset.top+200) {
+              $(".navigation").css('background-color', '#333');
+           } else {
+              $('.navigation').css('background-color', 'transparent');
+           }
+       });
+       
+        }
+    });
+</script>
+
+    

@@ -1,4 +1,4 @@
-<!--네브바-->
+<!--네브바
 <header class="header" id="header">
 	<div class="contents" id="header-contents">
 		<h1 class="header-logo">
@@ -19,21 +19,22 @@
 		</span>
 	</div>
 </header>
+<div id="startchange"></div>-->
 
-  <!--<div class="w-nav navigation" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
+<div class="w-nav navigation" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
     <div class="w-nav-button nav-link menu">
     </div>
-    <div>
-      <a class="yumlogo" href='#'>
+    <div style="margin-right: 60px;">
+      <a class="yumlogo" href='/' style="margin-left:120px">
       <img height="74" src="/assets/navbar/logo.png"></a>
       <nav class="w-nav-menu nav-menu" role="navigation">
       <% if duser_signed_in? %>
-        
+       <div>      
         <div class="nav_div"><a style="text-decoration:none;" href="/yumyum/pride">
         <img class="board" height="40" src="/assets/navbar/board_wh.png">
           <div class="nav_txt">게시판</div></a>
         </div>
-        <div class="nav_div" data-id="<%= current_duser.id %>"><a style="text-decoration:none;" href="#">
+        <div class="nav_div" data-id="<%= current_duser.id %>"><a style="text-decoration:none;" href="/yumyum/material/<%= current_duser.id %>">
         <img class="refrig" src="/assets/navbar/refrig_wh.png">
           <div class="nav_txt">냉장고</div></a>
         </div>
@@ -54,6 +55,7 @@
           <div class="sign_up"><a style="text-decoration:none;" href="/dusers/sign_up"><strong>회원가입</strong></a></div>
         </div>
         <% end %>
+      </div>  
       </nav>
       <div class="src_div">
         <div>
@@ -63,4 +65,11 @@
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
+  <div id="startchange"></div>
+  
+<style>
+  .navigation {
+     background-color:rgba(51,51,51,0.9);
+  }
+</style>
