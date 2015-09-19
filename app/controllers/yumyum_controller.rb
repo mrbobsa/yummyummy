@@ -20,7 +20,7 @@ class YumyumController < ApplicationController
     @detail = Detailrecipe.where('smallrecipe_id' => params[:id])
     
 =begin 
-    주재료 출력 삭제
+    주재료 출력 삭제s
     main_material = Recipecold.where('smallrecipe_id = ? AND recipecold_trait = ?',params[:id],true)
     @main_m = []
     main_material.each do |m|
