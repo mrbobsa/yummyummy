@@ -3,37 +3,38 @@
     <div class="w-container">
       <div class="recipe_info">
         <div class="w-row">
-          <div class="w-col w-col-4">
-            <div class="w-clearfix">
+          <div class="w-col w-col-5">
+            <div>
               <h1 class="recipe_title"><%= @bigrecipe.bigrecipe_name %></h1>
-              <p class="recipe_info_txt"><%= @recipepage.smallrecipe_content %></p>
             </div>
           </div>
-          <div class="w-col w-col-4 w-clearfix">
-            <div class="recipe_info_div"><img class="recipe_time" height="30" src="/assets/clock_bl.png">
+          <div class="w-col w-col-3 w-clearfix">
+            <div class="recipe_info_div">
+              <img class="recipe_time" height="30" src="/assets/clock_bl.png">
               <div class="recipe_time_txt"><b><%= @recipepage.smallrecipe_time %>분</b></div>
             </div>
-            
-            <!-- 별점 표시 -->
-            <div class="recipe_info_div">
+          
+             <!--별점 표시--> 
+            <div class="w-clearfix recipe_info_div">
               <% @recipepage.smallrecipe_level.times do %>
                 <img class="recipe_level" width="32" src="/assets/star.png">
               <% end %>
               <div class="recipe_level_txt"><b>난이도</b></div>
             </div>
-            
           </div>
           <div class="w-col w-col-4">
             <div class="w-clearfix">
-            <img class="tutorial_logo" src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg">
-            <img class="prt_btn" src="/assets/btn_prt.png"><img class="radio" height="50" src="/assets/btn_radio.png">
+            <a href="/yumyum/tutorial"><img class="tutorial_logo" src="/assets/btn_tutor.png"></a>
+            <img class="prt_btn" src="/assets/btn_prt.png">
+            <img class="radio" height="50" src="/assets/btn_radio.png">
             <img class="timer" height="50" src="/assets/btn_timer.png">
             </div>
           </div>
         </div>
         <div>
+          <div class="recipe_info_txt"><%= @recipepage.smallrecipe_content %></div>
           <% if duser_signed_in? %>
-            <p class="recipe_info_txt">나에게 없는 재료 : <% @my_empty.each do |m| %><%= m %>&nbsp; <% end %></p>
+            <div class="recipe_info_txt">나에게 없는 재료 : <% @my_empty.each do |m| %><%= m %>&nbsp; <% end %></div>
           <% end %>  
         </div>
       </div>
@@ -43,7 +44,8 @@
         <div class="w-slider-mask slide_mask">
             <div class="w-slide">
               <div class="w-row">
-                <div class="w-col w-col-8 w-col-small-8"><img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
+                <div class="w-col w-col-8 w-col-small-8">
+                <img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
                 </div>
                 <div class="w-col w-col-4 w-col-small-4 recipe_process">
                   <div class="recipe_txt">
@@ -57,7 +59,7 @@
           
       
       
-      <!-- slide controls -->
+      <!-- slide controls --> 
       <div class="w-slider-arrow-left">
         <div class="w-icon-slider-left slide_left"></div>
       </div>
@@ -69,10 +71,12 @@
     </div>  
   </div>
   
-  <!--좋아요,댓글,공유 섹션-->
+  <!-- 좋아요,댓글,공유 섹션 -->
   <div class="w-section section recipe" id="pricing">
     <div class="w-container">
-      <div class="w-clearfix like_div"><a href="/yumyum/recipescrap/<%= @recipepage.id %>"><img class="like_btn" src="/assets/heart_gr.png"></a>
+      <div class="w-clearfix like_div">
+      <a href="/yumyum/recipescrap/<%= @recipepage.id %>">
+      <img class="like_btn" src="/assets/heart_gr.png"></a>
         <div class="count"><%= @recipepage.smallrecipe_heart %></div>
         <img class="reply_img" src="/assets/reply_gr.png">
         <div class="count"><%= @replycount %></div>
@@ -97,6 +101,7 @@
               <a href="/yumyum/smallreply_del/<%= r.id %>">del</a><br>
             <% end %>  
           </div>
+          <a href="/yumyum/smalldelete/<%= @recipepage.id %>">삭제</a>
         </div>
       </div>
     </div>
@@ -146,6 +151,7 @@
     </ul>
     -->
   </div>
+
 
   <script src="/assets/imagesloaded.pkgd.min.js"></script>
   <script src="/assets/hammer.min.js"></script>

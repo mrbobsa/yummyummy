@@ -31,8 +31,8 @@
                     <% if Material.find(jaeryo.material_id).material_category == '채소' %>
                       <div class="w-col w-col-2 w-col-small-4">
                           <div class="ingre_wrapper"><img id="gray-image" class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                           <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
-                           <a href="/yumyum/material_del/<%= jaeryo.material_id %>">삭제</a>
+                           <a href="/yumyum/usercold/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                           <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                           </div>
                       </div>
                     <% end %>  
@@ -45,7 +45,8 @@
                   <% if Material.find(jaeryo.material_id).material_category == '육류' %>
                     <div class="w-col w-col-2">
                         <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                         </div>
                     </div>
                   <% end %>  
@@ -58,7 +59,8 @@
                     <% if Material.find(jaeryo.material_id).material_category == '해물' %>
                       <div class="w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-4">
                         <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                         </div>
                       </div>
                     <% end %>
@@ -71,7 +73,8 @@
                     <% if Material.find(jaeryo.material_id).material_category == '가공식품' %>
                       <div class="w-col w-col-2">
                         <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                         </div>
                       </div>
                     <% end %>  
@@ -84,7 +87,8 @@
                     <% if Material.find(jaeryo.material_id).material_category == '소스' %>
                     <div class="w-col w-col-2">
                       <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                       <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                       <a href="/yumyum/usercold/<%= jaeryo.material_id %>"style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                       <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                       </div>
                     </div>
                     <% end %>
@@ -97,7 +101,8 @@
                     <% if Material.find(jaeryo.material_id).material_category == '기타' %>
                       <div class="w-col w-col-2">
                         <div class="ingre_wrapper"><img class="ingre_image" src="<%= jaeryo.gray_image.url %>" width="50">
-                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/usercold/<%= jaeryo.material_id %>"style="text-decoration:none; font-size:15px;"><div class="ingre_name"><%= Material.find(jaeryo.material_id).material_name %></div></a>
+                         <a href="/yumyum/material_del/<%= jaeryo.material_id %>" style="text-decoration:none; font-size:15px;">삭제</a>
                         </div>
                       </div>
                     <% end %>  
@@ -144,7 +149,7 @@
                 <div class="w-col w-col-3 w-col-small-3 w-col-tiny-6">
                   <div class="ingre_wrapper"><img class="ingre_image" src="<%= m_image.normal_image.url %>" width="50">
                     <div class="ingre_name"><%= m_image.material_name %></div>
-                   <a href="/yumyum/mymaterial_del/<%= m_image.material_code %>">삭제</a>
+                   <a href="/yumyum/mymaterial_del/<%= m_image.material_code %>" style="text-decoration:none; font-size:15px;">삭제</a>
                   </div>
                 </div>
               <% end %>
@@ -264,9 +269,7 @@ p {
 .ingre_list {
   background-color: white;
 }
-.ingre_image {
-  margin-right: 5px;
-}
+
 .recipe {
   text-align: center;
 }
@@ -280,6 +283,8 @@ p {
     float: left;
     text-align: left;
 }
+
+
 </style>
 
 <footer>
@@ -291,6 +296,8 @@ p {
     $(function() {
       $( '#tabs' ).tabs();
     });
+    
+
+    
   </script>
-  
 </footer>
