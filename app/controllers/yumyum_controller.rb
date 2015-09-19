@@ -364,10 +364,10 @@ class YumyumController < ApplicationController
   def smalldelete
     smallrecipe = Smallrecipe.find(params[:id])
     bigrecipe = Bigrecipe.find(smallrecipe.bigrecipe_id)
+    bigrecipe.destroy
     smallrecipe.destroy
-    if bigrecipe.smallrecipes.empty?
-      bigrecipe.destroy
-    end
+    #if bigrecipe.smallrecipes.empty?
+    #end
     redirect_to "/"
   end
   
@@ -462,4 +462,9 @@ class YumyumController < ApplicationController
     end  
   end
   
+  def bigdelete
+    big = Bigrecipe.find(params[:id])
+    big.destroy
+    redirect_to :back
+  end
 end
