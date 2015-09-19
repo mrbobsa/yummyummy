@@ -217,7 +217,9 @@ a:-webkit-any-link {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url(/assets/videos/bgIframe.png) repeat;
+    //background: url(/assets/videos/bgIframe.png) repeat;
+    background-color: #000000;
+    opacity: 0.4;
 }
 .intro .intro-contents {
     z-index: 100;
