@@ -44,7 +44,8 @@
         <div class="w-slider-mask slide_mask">
             <div class="w-slide">
               <div class="w-row">
-                <div class="w-col w-col-8 w-col-small-8"><img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
+                <div class="w-col w-col-8 w-col-small-8">
+                <img class="recipe_img" src="<%= @recipepage.smallrecipe_image.url %>">
                 </div>
                 <div class="w-col w-col-4 w-col-small-4 recipe_process">
                   <div class="recipe_txt">
@@ -73,7 +74,9 @@
   <!-- 좋아요,댓글,공유 섹션 -->
   <div class="w-section section recipe" id="pricing">
     <div class="w-container">
-      <div class="w-clearfix like_div"><a href="/yumyum/recipescrap/<%= @recipepage.id %>"><img class="like_btn" src="/assets/heart_gr.png"></a>
+      <div class="w-clearfix like_div">
+      <a href="/yumyum/recipescrap/<%= @recipepage.id %>">
+      <img class="like_btn" src="/assets/heart_gr.png"></a>
         <div class="count"><%= @recipepage.smallrecipe_heart %></div>
         <img class="reply_img" src="/assets/reply_gr.png">
         <div class="count"><%= @replycount %></div>
