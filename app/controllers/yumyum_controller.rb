@@ -428,14 +428,13 @@ class YumyumController < ApplicationController
     if duser_signed_in?
       @order_recipe = Hash.new
       @image = current_duser.user_image
-      @material = Duser.joins(:materials).select("dusers.id, materials.*").where("dusers.id" => current_duser.id).take(9)
-      @materialcode=[]
-      @material.each do |m|
-        @materialcode << m.material_code
-      end
+      # @material = Duser.joins(:materials).select("dusers.id, materials.*").where("dusers.id" => current_duser.id)
+      # @materialcode=[]
+      # @material.each do |m|
+      #   @materialcode << m.material_code
+      # end
       
       Smallrecipe.all.each do |small|
-        key = small.id
         recipe_m = Recipecold.where('smallrecipe_id' => small.id)
         user_m = DusersMaterial.where('duser_id' => current_duser.id)
         empty_m = [] #나에게 없는 재료코드
@@ -452,13 +451,12 @@ class YumyumController < ApplicationController
         end
         
         if recipe_m.count == 0
-          percent = 0
+          percent = 0.0
         else
-          percent = noempty_m.count/recipe_m.count
+          percent = noempty_m.count.to_f / recipe_m.count.to_f
         end
-        @order_recipe[key] = percent
+        @order_recipe[small.id] = percent
       end
-      @order_recipe.values.sort.reverse!
     end  
   end
   

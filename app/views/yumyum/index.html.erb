@@ -7,24 +7,29 @@
 </head>  
 <!--하...씨...왜 다 날아간거야.... 갑자기 코드가 없었음...-->
 <!--점보트론-->
-<section class="intro" id="section-intro">
-	<div class="intro-video-container">
-		<div class="intro-video">
-			<video id="video-iframe" src="<%= asset_path 'videos/Intro_Video.mp4' %>" width="1280" height="720" autoplay="" loop="" style="width: 1436px; height: 807.75px; margin-top: -159.9px;"></video>
-		</div>
-		<div class="intro-video-shield"> </div>
-	</div>
-	<div class="intro-contents">
-	  <div class="intro-splash">
-		  <div class="startchange">
-		  <div class="contents">
-			  <h1>D2 Startup Factory는<br class="br-mobile"> 기술의 무한한<br class="br-pc">가능성에<br class="br-mobile"> 도전하는 Tech Startup과<br class="br-mobile"> 함께합니다.</h1>
-				  <h2>NAVER Tech Startup Accelerator</h2>
-		  </div>
-		  </div>
-	  </div>
-  </div>
-</section>
+<div class="row">
+  <section class="intro" id="section-intro">
+  	<div class="intro-video-container" style="
+      height: 650px;
+      margin-top: 80px;
+  ">
+  		<div class="intro-video">
+  			<video id="video-iframe" src="<%= asset_path 'videos/Intro_Video.mp4' %>" width="1280" height="600" autoplay="" loop="" style="width: 100%; height: 807.75px; margin-top: -159.9px;"></video>
+  		</div>
+  		<div class="intro-video-shield"> </div>
+  	</div>
+  	<div class="intro-contents">
+  	  <div class="intro-splash">
+  		  <div class="startchange">
+  		  <div class="contents">
+  			  <h1>D2 Startup Factory는<br class="br-mobile"> 기술의 무한한<br class="br-pc">가능성에<br class="br-mobile"> 도전하는 Tech Startup과<br class="br-mobile"> 함께합니다.</h1>
+  				  <h2>NAVER Tech Startup Accelerator</h2>
+  		  </div>
+  		  </div>
+  	  </div>
+    </div>
+  </section>
+</div>
 <!--<div class="w-section jumbo">
     <div class="w-row">
       <div class="w-col w-col-3 jumbo_grid">
@@ -78,6 +83,7 @@
   </div>-->
   
   <!--레시피 부분-->
+  <div class="row" style="margin-top:250px">
   <div class="w-section section content" id="pricing">
     <div class="w-container">
       <h4 class="main_text3">"냠냠"과 함께라면 요리가 쉬워집니다.</h4>
@@ -176,6 +182,7 @@
         </div>
       </div>
     </div>
+  </div>  
 
 <script>
  $(document).ready(function(){       

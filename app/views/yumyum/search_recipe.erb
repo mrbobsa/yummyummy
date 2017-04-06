@@ -4,8 +4,8 @@
       <div class="w-row">
         
         <!--레시피카드-->
-      <% @order_recipe.each do |o, v| %>  
-        <% smallrecipe = Smallrecipe.find(o) %>
+      <% @order_recipe.sort_by { |k,v| -v }.each do |key, value| %>  
+        <% smallrecipe = Smallrecipe.find(key) %>
         <% bigrecipe = Bigrecipe.find(smallrecipe.bigrecipe_id) %>
         <% recipe_m = Recipecold.where('smallrecipe_id' => smallrecipe.id) %>
          <% if duser_signed_in? %>
@@ -94,3 +94,4 @@
     </div>   
   </div>
 </div>
+
